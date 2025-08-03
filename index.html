@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <title>Responsive Image with Redirect</title> -->
+  <style>
+    /* Reset default margins and ensure box-sizing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Container for the image */
+    .image-container {
+      width: 100%;
+      max-width: 1800px; /* Max width for desktop */
+      margin: 0 auto; /* Center the container */
+    }
+
+    /* Style for the image */
+    .responsive-image {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Remove inline-block spacing */
+      cursor: pointer; /* Indicate clickability */
+    }
+
+    /* Ensure the link doesn't affect image styling */
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 767px) {
+      .image-container {
+        padding: 10px; /* Optional padding for mobile */
+      }
+    }
+
+    /* Desktop-specific styles */
+    @media (min-width: 768px) {
+      .image-container {
+        padding: 20px; /* Optional padding for desktop */
+      }
+    }
+  </style>
+</head>
+<body style="background-color: black;">
+  <div class="image-container">
+    <a href="/connect/index.html">
+      <picture>
+        <!-- Desktop image (768px and above) -->
+        <source
+          media="(min-width: 768px)"
+          srcset="images/desktop.png"
+        />
+        <!-- Mobile image (below 768px) -->
+        <source
+          media="(max-width: 767px)"
+          srcset="images/mobile.png"
+        />
+        <!-- Fallback image -->
+        <img
+          src="images/mobile.png"
+          alt="Responsive Image"
+          class="responsive-image"
+        />
+      </picture>
+    </a>
+  </div>
+
+  <script>
+    // Optional: Add JavaScript for redirect confirmation or analytics
+    document.querySelector('.responsive-image').addEventListener('click', () => {
+      // Redirect is handled by the <a> tag, but you can add logic here if needed
+      console.log('Image clicked, redirecting to /connect');
+    });
+  </script>
+</body>
+</html>
